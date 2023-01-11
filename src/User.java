@@ -318,10 +318,10 @@ public User(String username, String password) {
                 //popular by day, week, month, year
                 //popular Author by day, week, month, year
                 //popular Genre  by day, week, month, year
+                CBSoldDatabase.popular();
 
-
-                Popular baza = new Popular(CBSoldDatabase);
-                baza.sort();
+//                Popular baza = new Popular(CBSoldDatabase);
+//                baza.sort();
                 break;
 
             case 20:
