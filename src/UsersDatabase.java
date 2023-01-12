@@ -40,20 +40,7 @@ public class UsersDatabase {
         this.users = users;
     }
 
-//    public boolean addManager(String name, String password){
-//        for(int i=0; i<users.size(); i++){
-//            String tempName = users.get(i).getUsername();
-//            String tempPassword = users.get(i).getPassword();
-//            if(tempName.equals(name)){
-//                System.out.println("Username is used, create a new Username.");
-//                return false;
-//            }
-//
-//        }
-//        //users.add(new User(name, password, true));
-//        users.add(new User(name, password));
-//        return true;
-//    }
+
 
     public boolean addUser(String name, String password){
         for(int i=0; i<users.size(); i++){
@@ -65,23 +52,13 @@ public class UsersDatabase {
             }
 
         }
-        //users.add(new User(name, password, false));
+
         users.add(new User(name, password));
 
         return true;
     }
 
-//    public User userLogin(String username, String password){
-//        for(int i=0; i<users.size(); i++){
-//            if(users.get(i).getUsername().equals(username)){
-//                if(users.get(i).getPassword().equals(password)){
-//                    User currentUser = users.get(i);
-//                    return currentUser;
-//                }
-//            }
-//        }
-//        return null;
-//    }
+
     public User userLogin(){
         Scanner scannerLogin = new Scanner(System.in);
         System.out.println("Login to the system:");

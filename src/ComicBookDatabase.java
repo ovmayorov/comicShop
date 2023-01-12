@@ -115,8 +115,7 @@ public class ComicBookDatabase {
         bookScanner.nextLine();
         int choiceFlag = 0;
         switch (choiceEditComicBook) {
-            //String oldName = getName();
-            //System.out.println("Name = "+ oldName + "  Enter new name");
+
 
             case 1:
                 System.out.println("Enter new name:");
@@ -208,6 +207,9 @@ public class ComicBookDatabase {
                 editBook.setQuantity(newQuantity);
                 bookScanner.nextLine();
                 break;
+            default:
+                System.out.println("Incorrect code.");
+                break;
         }
     }
 
@@ -216,18 +218,14 @@ public class ComicBookDatabase {
         int discount = bookScanner.nextInt();
         bookScanner.nextLine();
         editBook.setDiscount(discount);
-        //System.out.println("Enter new Sale Price: ");
+
         double newSalePrice = editBook.getSalePrice() - editBook.getSalePrice()/100*discount;
         editBook.setSalePrice(newSalePrice);
-        //bookScanner.nextLine();
-        //System.out.println("Continue? enter - 1 ");
-        //choiceFlag = bookScanner.nextInt();
-        //bookScanner.nextLine();
 
     }
 
     public void saveForCustomer(ComicBook editBook){
-        //System.out.println("Saving comic book for customer: ");
+
         System.out.println("How many books to save? :");
         int saveBookNumber = bookScanner.nextInt();
         bookScanner.nextLine();

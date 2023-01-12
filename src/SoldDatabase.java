@@ -48,27 +48,23 @@ public class SoldDatabase {
     }
 
     public void popular(){
-        //Create a list of books sold today
-        //System.out.println("Comic Book popular of the Day: ");
-        //List of books sold today
+
         List<SoldComicBook> dayBooks = getCBSoldDatabase().stream().filter( n -> n.getSellDate().equals(LocalDate.now())).toList() ;
         //проходимся по листу и загоняем все в MAP , ключ - название книги, параметр - количество продаж
-        //выводим на печать первые 3 (или 1 )
+
         Map<String, Integer> soldByDay = new HashMap<>();
         for(int i=0; i<dayBooks.size(); i++){
             if(soldByDay.get(dayBooks.get(i).getName()) == null){
                 //Book is not in the Map
                 soldByDay.put(dayBooks.get(i).getName(),dayBooks.get(i).getSoldQuantity() );
             }
-            //SortedMap<Integer, String> firstFive = Util.putFirstEntries(5, sourceMap);
+
             else{
                 int soldQuantityAlready = dayBooks.get(i).getSoldQuantity();
                 soldByDay.put(dayBooks.get(i).getName(),soldQuantityAlready + dayBooks.get(i).getSoldQuantity() );
             }
         }
-//        soldByDay.entrySet().stream()
-//                .sorted(Map.Entry.comparingByValue())
-//                .forEach(System.out::println);
+
         int biggestSale = 0;
         String popularBook = null;
         for(Map.Entry<String, Integer> entry : soldByDay.entrySet()){
@@ -80,7 +76,6 @@ public class SoldDatabase {
         System.out.println("Most popular Comic Book of the Day: "+popularBook);
         System.out.println();
 
-        //System.out.println("Comic Book popular of the Week: ");
         biggestSale = 0;
         popularBook = null;
         LocalDate today = LocalDate.now();
@@ -271,29 +266,6 @@ public class SoldDatabase {
         System.out.println("Most popular Genre of the Month: "+popularBook);
         System.out.println();
 
-/*
-int biggestFrequency = 0;
-        String mostFrequentWordFound = null;
-        for (Map.Entry<String, Integer> entry : wordsFrequency.entrySet()) {
-            if (entry.getValue() > biggestFrequency) {
-                biggestFrequency = entry.getValue();
-                mostFrequentWordFound = entry.getKey();
-            }
-        }
- */
-        //System.out.println(soldByDay);
 
-
-
-        //sortedBooks.stream().forEach(System.out::println);
-
-
-//        List<String> longNameCities = cities
-//                .stream()
-//                .filter(city -> city.length() > 6)
-//                .distinct()
-//                .collect(Collectors.toList());
-//        System.out.println("Города, название которых длиннее 6 символов:");
-//        System.out.println(longNameCities);
     }
 }

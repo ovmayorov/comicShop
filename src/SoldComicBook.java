@@ -22,7 +22,7 @@ public class SoldComicBook extends ComicBook{
     public void setSoldQuantity(int soldQuantity) {
         this.soldQuantity = soldQuantity;
     }
-//
+
 @Override
 public String toString() {
     return "SoldComicBook{" +
@@ -34,12 +34,6 @@ public String toString() {
             ", SoldQuantity=" + soldQuantity +
             ", SellDate=" + sellDate +
             '}';
-}
-//    @Override
-//    public String toString() {
-//        return "SoldComicBook{" +
-//                "soldQuantity=" + soldQuantity +
-//                ", sellDate=" + sellDate +
-//                '}';
-//    }
+    }
+
 }

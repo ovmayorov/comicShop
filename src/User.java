@@ -11,11 +11,7 @@ public class User implements Serializable {
     public User(){
 
     }
-//    public User(String username, String password, boolean manager) {
-//        this.username = username;
-//        this.password = password;
-//        this.manager = manager;
-//    }
+
 public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -91,11 +87,12 @@ public User(String username, String password) {
                     }
                 }
 
-                System.out.println("To Remove comic book record, enter comic book Name or part of the name:");
+                System.out.println("To Remove comic book record, enter comic book Name:");
                 String nameToRemove = runScanner.nextLine();
                 for(int i=0; i< CBDatabase.getCBDatabase().size(); i++){
                     if(CBDatabase.getCBDatabase().get(i).getName().equals(nameToRemove)){
                         CBDatabase.getCBDatabase().remove(i);
+                        System.out.println("Comic Book deleted from database.");
                     }
                 }
                 break;
@@ -147,6 +144,13 @@ public User(String username, String password) {
                             System.out.println("How many to sell? \nEnter number : ");
                             int sellQuantity = runScanner.nextInt();
                             runScanner.nextLine();
+                            if(sellQuantity >CBDatabase.getCBDatabase().get(i).getQuantity() ){
+                                System.out.println("You entered incorrect quantity. ");
+                                System.out.println("How many to sell? \nEnter number : ");
+                                sellQuantity = runScanner.nextInt();
+                                runScanner.nextLine();
+                            }
+
                             CBDatabase.getCBDatabase().get(i).setQuantity(CBDatabase.getCBDatabase().get(i).getQuantity()-sellQuantity);
                             SoldComicBook newSold = new SoldComicBook();
                             //newSold = CBDatabase.getCBDatabase().get(i);
@@ -161,7 +165,7 @@ public User(String username, String password) {
                             System.out.println(newSold);
 
                         }
-                        //CBDatabase.editComicBook(CBDatabase.getCBDatabase().get(i));
+
                         System.out.println(CBDatabase.getCBDatabase().get(i));
                     }
                 }
@@ -240,6 +244,13 @@ public User(String username, String password) {
                             System.out.println("How many to Write-Off? \nEnter number : ");
                             int sellQuantity = runScanner.nextInt();
                             runScanner.nextLine();
+                            if(sellQuantity >CBDatabase.getCBDatabase().get(i).getQuantity() ){
+                                System.out.println("You entered incorrect quantity. ");
+                                System.out.println("How many to Write-Off? \nEnter number : ");
+                                sellQuantity = runScanner.nextInt();
+                                runScanner.nextLine();
+                            }
+
                             CBDatabase.getCBDatabase().get(i).setQuantity(CBDatabase.getCBDatabase().get(i).getQuantity()-sellQuantity);
                             SoldComicBook newSold = new SoldComicBook();
                             newSold.setName(CBDatabase.getCBDatabase().get(i).getName());
@@ -263,7 +274,7 @@ public User(String username, String password) {
                     System.out.println(CBDatabase.getCBDatabase().get(i));
                 }
                 break;
-    ///////////////////////////
+
             case 9:
                 for (int i=0; i < CBDatabase.getCBDatabase().size(); i++){
                     System.out.println(CBDatabase.getCBDatabase().get(i));
@@ -291,7 +302,7 @@ public User(String username, String password) {
                         }
                     }
                 }
-                else {
+                else if(choice == 3){
                     System.out.println("Search comic book by Genre : ");
                     searchComicBookName = runScanner.nextLine();
                     for (int i = 0; i < CBDatabase.getCBDatabase().size(); i++) {
@@ -299,6 +310,9 @@ public User(String username, String password) {
                             System.out.println(CBDatabase.getCBDatabase().get(i));
                         }
                     }
+                }
+                else{
+                    System.out.println("You entered incorrect number.");
                 }
 
                 break;
@@ -314,14 +328,7 @@ public User(String username, String password) {
                 }
                 break;
             case 11:
-                //To SHOW Popular
-                //popular by day, week, month, year
-                //popular Author by day, week, month, year
-                //popular Genre  by day, week, month, year
                 CBSoldDatabase.popular();
-
-//                Popular baza = new Popular(CBSoldDatabase);
-//                baza.sort();
                 break;
 
             case 20:
@@ -340,15 +347,10 @@ public User(String username, String password) {
 
             case 00:
                 break;
+            default:
+                System.out.println("Incorrect code.");
+                break;
         }
-
     }
 
-//    @Override
-//    public int hashCode() {
-//        int result = username != null ? username.hashCode() : 0;
-//        result = 31 * result + (password != null ? password.hashCode() : 0);
-//        result = 31 * result + (manager ? 1 : 0);
-//        return result;
-//    }
 }

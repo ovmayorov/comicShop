@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ComicBook implements Serializable {
-    //Scanner scannerComicBook = new Scanner(System.in);
+
     private String name;
     private String author;
     private String publisher;
